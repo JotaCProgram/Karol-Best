@@ -1,210 +1,172 @@
-html {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #ECE9E6;
-    background: linear-gradient(to bottom, #ECE9E6, #FFF);
+/* Adicionando uma classe para a animação de entrada */
+.zoom-in {
+  transform: scale(0);
+  animation: zoomIn 1s ease-in-out forwards;
+}
+
+/* Definindo a animação de entrada */
+@keyframes zoomIn {
+  from {
+    transform: scale(0);
   }
-  
-  body {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    font-family: 'Quicksand', sans-serif;
-    overflow-x: hidden;
-    position: relative;
-    top: -2.5rem;
+  to {
+    transform: scale(1);
   }
-  
-  .heading {
-    text-align: center;
-    color: #2E5266;
-    margin-bottom: 3rem;
-  }
-  
-  .heading h1 {
-    margin-bottom: 0;
-  }
-  
-  .heading h6 {
-    margin: 0;
-  }
-  
-  .heading p {
-    margin: 0;
-  }
-  
-  .heading a {
-    color: #2E5266;
-    display: inline-block;
-  }
-  
-  .heading a .fab {
-    margin-right: 0.5rem;
-    font-size: 1.5rem;
-    padding: 0.5rem;
-    margin-top: 0.5rem;
-  }
-  
+}
+
+
+
+
+
+
+
+/* Estilos padrão (modo claro) */
+body {
+  font-family: 'Quicksand', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff; /* Cor de fundo do corpo */
+  color: #000000; /* Cor do texto */
+}
+
+/* Estilos para o modo noturno */
+.dark-mode body {
+  background-color: #333333; /* Cor de fundo do corpo no modo noturno */
+  color: #ffffff; /* Cor do texto no modo noturno */
+}
+
+/* Estilos para os cards */
+.ui-card {
+  width: 230px;
+  height: 400px;
+  max-height: 100vh;
+  background-color: #ccc;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  margin: 10px;
+  border: 1px solid #E81E62
+}
+
+/* Estilos para o botão de alternar tema */
+#toggle-theme {
+  position: fixed;
+  top: 10px;
+  right: 20px;
+  background-color: #ffffff;
+  color: #000000;
+  border: none;
+  padding: 10px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+
+
+
+
+.heading {
+  text-align: center;
+  color: #E81E62;
+  margin-bottom: 3rem;
+}
+
+.heading h1 {
+  padding: -90px;
+  margin-bottom: 5px;
+}
+
+.heading h6 {
+  margin: 0;
+}
+
+.heading p {
+  margin: 0;
+}
+
+
+
+
+
+
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+.ui-card:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+  box-shadow: 0px 0px 10px rgba(146, 3, 122, 0.5);
+}
+
+/* Exemplo de imagem de fundo para o card 1 */
+.ui-card:nth-child(1) {
+  background-image: url('https://i.ibb.co/FYBqVhT/DIV-1.jpg');
+}
+
+/* Exemplo de imagem de fundo para o card 2 */
+.ui-card:nth-child(2) {
+  background-image: url('https://i.ibb.co/M5nMdLR/DIV-2.jpg');
+}
+
+/* Exemplo de imagem de fundo para o card 3 */
+.ui-card:nth-child(3) {
+  background-image: url('https://i.ibb.co/rkNG30R/DIV-3.jpg');
+}
+
+@media screen and (min-width: 768px) {
   .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
+    flex-direction: row;
   }
-  
-  .container .ui-card {
-    height: 20rem;
-    width: 12rem;
-    position: relative;
-    z-index: 1;
-    transform: scale(0.6) translateY(-2rem);
-    opacity: 0;
+  .ui-card:hover {
+    transform: scale(1.1); /* Aumenta o tamanho do card em 10% */
     cursor: pointer;
-    pointer-events: none;
-    background: #2E5266;
-    background: linear-gradient(to top, #2E5266, #6E8898);
-    transition: 1s;
+    box-shadow: 0px 0px 10px rgba(146, 3, 122, 0.5);
+  }
+  .ui-card::after {
+    transform: scale(1.0); /* Aumenta o tamanho do card em 10% */
+    cursor: pointer;
+    box-shadow: 0px 0px 10px rgba(146, 3, 122, 0.5);
+  }
+}
+
+
+@media screen and (min-width: 320px){
+  .typewriter {
+    overflow: hidden;
+    border-right: .1em solid rgb(177, 0, 103);
+    white-space: nowrap;
+    margin-bottom: 20px; /* Espaço entre os cards e o texto */
+    letter-spacing: .15em;
+    animation: typing 3.5s steps(70, end), blink-caret .89s step-end infinite;
   }
   
-  .container .ui-card:after {
-    content: '';
-    position: absolute;
-    height: 2px;
-    width: 100%;
-    border-radius: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
-    bottom: -5rem;
-    filter: blur(4px);
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 16% }
   }
   
-  .container .ui-card:nth-child(1):before {
-    content: '1';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    font-size: 3rem;
-    font-weight: 300;
-    color: white;
+  .typewriter p{
+    font-size: 9px;
   }
-  
-  .container .ui-card:nth-child(2):before {
-    content: '2';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    font-size: 3rem;
-    font-weight: 300;
-    color: white;
+  p{
+    font-size: 1px;
   }
-  
-  .container .ui-card:nth-child(3):before {
-    content: '3';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    font-size: 3rem;
-    font-weight: 300;
-    color: white;
-  }
-  
-  .container .ui-card:nth-child(4):before {
-    content: '4';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    font-size: 3rem;
-    font-weight: 300;
-    color: white;
-  }
-  
-  .container .ui-card:nth-child(5):before {
-    content: '5';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    font-size: 3rem;
-    font-weight: 300;
-    color: white;
-  }
-  
-  .container .ui-card:nth-child(6):before {
-    content: '6';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    font-size: 3rem;
-    font-weight: 300;
-    color: white;
-  }
-  
-  .container .ui-card:nth-child(7):before {
-    content: '7';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    font-size: 3rem;
-    font-weight: 300;
-    color: white;
-  }
-  
-  .container .ui-card:nth-child(8):before {
-    content: '8';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    font-size: 3rem;
-    font-weight: 300;
-    color: white;
-  }
-  
-  .container .ui-card:nth-child(9):before {
-    content: '9';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    font-size: 3rem;
-    font-weight: 300;
-    color: white;
-  }
-  
-  .container .ui-card:nth-child(10):before {
-    content: '10';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    font-size: 3rem;
-    font-weight: 300;
-    color: white;
-  }
-  
-  .container .ui-card.active {
-    z-index: 3;
-    transform: scale(1) translateY(0) translateX(0);
-    opacity: 1;
-    pointer-events: auto;
-    transition: 1s;
-  }
-  
-  .container .ui-card.prev,
-  .container .ui-card.next {
-    z-index: 2;
-    transform: scale(0.8) translateY(-1rem) translateX(0);
-    opacity: 0.6;
-    pointer-events: auto;
-    transition: 1s;
-  }
-  
+
+}
+
+
+
