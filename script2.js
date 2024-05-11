@@ -5,7 +5,13 @@ $(document).ready(function() {
   // Função para redirecionar após o clique em .ui-card
   $('.ui-card').click(function() {
     var link = $(this).data('link');
-    setTimeout(function() {
+
+    // Adiciona a classe de animação quando o card é tocado
+    $(this).addClass('card-touched');
+
+    // Remove a classe de animação após 300ms para dar tempo da animação acontecer
+    setTimeout(() => {
+      // Redireciona para o link após a animação
       window.location.href = link; // Redireciona para o link após 2 segundos
     }, 2000);
   });
